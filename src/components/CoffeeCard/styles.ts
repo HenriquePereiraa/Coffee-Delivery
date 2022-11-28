@@ -37,7 +37,7 @@ export const CoffeeCardLabelType = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem ;
 
   > span {
     margin-top: -15px;
@@ -66,7 +66,7 @@ export const CardInfoBuyCoffee = styled.div`
   position: absolute;
   bottom: 10px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: spacing-between;
   align-items: center;
 

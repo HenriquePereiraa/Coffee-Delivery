@@ -5,27 +5,40 @@ import {
   DescriptionCoffee,
 } from "./styles";
 import Coffee1 from "../../assets/coffes/Type=Americano.png";
-import { defaultTheme } from "../../styles/themes/default";
 
 import { ShoppingCart } from "phosphor-react";
 
-export function CoffeeCard() {
+interface CoffeeCardProps {
+  image: string
+  labels: string[];
+  title: string;
+  description: string;
+  price: string;
+}
+
+export function CoffeeCard({
+  image,
+  labels,
+  title,
+  description,
+  price,
+}: CoffeeCardProps) {
   return (
     <CoffeeCardContainer>
-      <img src={Coffee1} alt="" />
+      <img src={image} alt="" />
       <CoffeeCardLabelType>
-        <span>Tradicional</span>
+        {labels.map((label) => {
+          return <span key={label}>{label}</span>;
+        })}
       </CoffeeCardLabelType>
 
-      <p className="coffee_title">Expresso Tradicional</p>
+      <p className="coffee_title">{title}</p>
 
-      <DescriptionCoffee>
-        O tradicional café feito com água quente e grãos moídos
-      </DescriptionCoffee>
+      <DescriptionCoffee>{description}</DescriptionCoffee>
       <CardInfoBuyCoffee>
         <div className="coffee_price">
           <span>R$</span>
-          <strong>9,90</strong>
+          <strong>{price}</strong>
         </div>
 
         <div className="coffee_quantidade">

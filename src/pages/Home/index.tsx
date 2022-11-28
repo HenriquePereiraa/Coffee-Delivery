@@ -7,11 +7,13 @@ import {
   HomeContentBanner,
   HomeContentInfo,
   HomeNossosCafe,
+  ListCoffees,
 } from "./styles";
 
 import Banner from "../../assets/banner.png";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import { CoffeeCard } from "../../components/CoffeeCard";
+import { coffees } from "../../utils/coffeeDatas";
 
 export function Home() {
   const contentForCardInfo = [
@@ -41,6 +43,8 @@ export function Home() {
     },
   ];
 
+  const coffeesInfo = coffees;
+
   return (
     <HomeContainer>
       <HomeBanner>
@@ -69,7 +73,20 @@ export function Home() {
       </HomeBanner>
       <HomeNossosCafe>
         <h2>Nossos cafés</h2>
-        <CoffeeCard/>
+        <ListCoffees>
+          {coffeesInfo?.map((coffee) => {
+            return (
+              <CoffeeCard
+                image={coffee.img }
+                labels={coffee.label}
+                title={coffee.title}
+                description={coffee.description}
+                price={coffee.price}
+                key={coffee.title}
+              />
+            );
+          })}
+        </ListCoffees>
       </HomeNossosCafe>
     </HomeContainer>
   );

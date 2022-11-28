@@ -9,6 +9,10 @@ export const ContainerHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  img {
+    cursor: pointer;
+  }
 `;
 
 export const InfoHeader = styled.div`

@@ -71,11 +71,17 @@ export const HomeNossosCafe = styled.section`
   flex-direction: column;
 
   > h2 {
-    margin:4rem 0;
+    margin: 4rem 0;
 
     font-family: "Baloo 2";
     font-weight: 800;
     font-size: 2rem;
     color: ${(props) => props.theme["gray-900"]};
   }
+`;
+
+export const ListCoffees = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5rem 2rem;
 `;
