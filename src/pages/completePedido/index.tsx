@@ -1,11 +1,15 @@
-import { MapPinLine } from "phosphor-react";
+import { CreditCard, CurrencyDollar, MapPinLine } from "phosphor-react";
 import { defaultTheme } from "../../styles/themes/default";
 import {
+  ButtonPaymentMode,
+  ButtonsModePayment,
   CompleteOrder,
   CompleteOrderContainer,
   ConfirmOrderContainer,
   InputForm,
+  ModePayment,
   OrderCart,
+  TitleCofirmPayment,
 } from "./styles";
 
 export function ConfirmOrder() {
@@ -14,13 +18,17 @@ export function ConfirmOrder() {
       <CompleteOrderContainer>
         <h3>Complete seu pedido</h3>
         <CompleteOrder>
-          <div className="titulo_complete_order">
-            <MapPinLine size={24} color={defaultTheme["yellow-600"]} />
+          <TitleCofirmPayment>
+            <MapPinLine
+              size={22}
+              color={defaultTheme["yellow-600"]}
+              className="icon"
+            />
             <div className="chamada_titulo_complete_order">
               <p>Endereço de Entrega</p>
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
-          </div>
+          </TitleCofirmPayment>
 
           <form>
             <div className="inputContainer">
@@ -40,6 +48,36 @@ export function ConfirmOrder() {
             </div>
           </form>
         </CompleteOrder>
+        <ModePayment>
+          <TitleCofirmPayment>
+            <CurrencyDollar
+              size={22}
+              color={defaultTheme["purple-600"]}
+              className="icon"
+            />
+            <div className="chamada_titulo_complete_order">
+              <p>Pagamento</p>
+              <p>
+                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+              </p>
+            </div>
+          </TitleCofirmPayment>
+
+          <ButtonsModePayment>
+            <ButtonPaymentMode>
+              <CreditCard size={20} color={defaultTheme["purple-600"]} />
+              CARTÃO DE CRÉDITO
+            </ButtonPaymentMode>
+            <ButtonPaymentMode>
+              <CreditCard size={20} color={defaultTheme["purple-600"]} />
+              CARTÃO DE DÉBITO
+            </ButtonPaymentMode>
+            <ButtonPaymentMode>
+              <CreditCard size={20} color={defaultTheme["purple-600"]} />
+              DINHEIRO
+            </ButtonPaymentMode>
+          </ButtonsModePayment>
+        </ModePayment>
       </CompleteOrderContainer>
       <OrderCart>
         <h2>Cafés selecionados</h2>
