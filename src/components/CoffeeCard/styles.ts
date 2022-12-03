@@ -26,7 +26,7 @@ export const CoffeeCardContainer = styled.div`
     font-size: 1.2rem;
     font-family: "Baloo 2";
     line-height: 130%;
-    margin-top:15px;
+    margin-top: 15px;
 
     color: ${(props) => props.theme["gray-900"]};
   }
@@ -37,7 +37,7 @@ export const CoffeeCardLabelType = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 0.6rem ;
+  gap: 0.6rem;
 
   > span {
     margin-top: -15px;
@@ -83,31 +83,15 @@ export const CardInfoBuyCoffee = styled.div`
     }
   }
 
-  .coffee_quantidade {
-    display: flex;
-    justify-content: spacing-between;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 7px;
-    border-radius: 10px;
-    background-color: ${(props) => props.theme["gray-400"]};
-
-    span {
-      color: ${(props) => props.theme["purple-900"]};
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    span:nth-child(2) {
-      color: ${(props) => props.theme["gray-900"]};
-      font-size: 1.2rem;
-      cursor: auto;
-    }
-  }
-
   .coffee_cart {
-    padding: 7px;
+    padding: 5px;
     border-radius: 8px;
     background-color: ${(props) => props.theme["purple-900"]};
     cursor: pointer;
+    transition: color 0.4s;
+
+    &:hover {
+      background-color: ${(props) => props.theme["purple-600"]};
+    }
   }
 `;

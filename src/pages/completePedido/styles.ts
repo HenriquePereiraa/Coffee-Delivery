@@ -7,8 +7,7 @@ export const ConfirmOrderContainer = styled.section`
   padding: 0 2%;
 
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  /* justify-content: space-between; */
   gap: 1rem;
 `;
 
@@ -134,11 +133,3 @@ export const ButtonPaymentMode = styled.button`
     background-color:${props => props.theme['purple-300']};
   }
 `
-
-export const OrderCart = styled.div`
-  align-self:flex-start;
-  max-width: 448px;
-  width: 100%;
-  background-color: ${(props) => props.theme["gray-200"]};
-  color: ${(props) => props.theme["gray-900"]};
-`;

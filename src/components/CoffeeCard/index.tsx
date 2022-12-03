@@ -7,6 +7,7 @@ import {
 import Coffee1 from "../../assets/coffes/Type=Americano.png";
 
 import { ShoppingCart } from "phosphor-react";
+import { ChooseAmountCoffee } from "../ChooseAmountCoffee";
 
 interface CoffeeCardProps {
   image: string
@@ -41,11 +42,7 @@ export function CoffeeCard({
           <strong>{price}</strong>
         </div>
 
-        <div className="coffee_quantidade">
-          <span>-</span>
-          <span>1</span>
-          <span>+</span>
-        </div>
+        <ChooseAmountCoffee/>
 
         <div className="coffee_cart">
           <ShoppingCart color="white" size={25} weight="fill" />

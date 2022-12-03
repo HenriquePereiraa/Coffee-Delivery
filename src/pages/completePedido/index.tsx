@@ -1,4 +1,7 @@
 import { CreditCard, CurrencyDollar, MapPinLine } from "phosphor-react";
+import ConfirmOrderCart from "../../components/ConfirmOrderCart";
+import { OrderCartContainer } from "../../components/ConfirmOrderCart/styles";
+import { ProductsInCart } from "../../components/ProductsInCart";
 import { defaultTheme } from "../../styles/themes/default";
 import {
   ButtonPaymentMode,
@@ -8,7 +11,6 @@ import {
   ConfirmOrderContainer,
   InputForm,
   ModePayment,
-  OrderCart,
   TitleCofirmPayment,
 } from "./styles";
 
@@ -79,9 +81,9 @@ export function ConfirmOrder() {
           </ButtonsModePayment>
         </ModePayment>
       </CompleteOrderContainer>
-      <OrderCart>
-        <h2>Cafés selecionados</h2>
-      </OrderCart>
+      <ConfirmOrderCart />
+
+      {/* <OrderCartContainer /> */}
     </ConfirmOrderContainer>
   );
 }
