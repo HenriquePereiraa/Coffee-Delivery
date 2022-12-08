@@ -27,6 +27,16 @@ export function CoffeeCard({
 
   const [amountCoffee, setAmountCoffee] = useState(1)
 
+  function handleAddToCart() {
+    const info = {
+      title,
+      price,
+      amountCoffee
+    }
+
+    console.log(info)
+  }
+
   return (
     <CoffeeCardContainer>
       <img src={image} alt="" />
@@ -47,7 +57,7 @@ export function CoffeeCard({
 
         <ChooseAmountCoffee amountCoffee={amountCoffee} setAmountCoffee={setAmountCoffee}/>
 
-        <div className="coffee_cart">
+        <div className="coffee_cart" onClick={handleAddToCart}>
           <ShoppingCart color="white" size={25} weight="fill" />
         </div>
       </CardInfoBuyCoffee>
