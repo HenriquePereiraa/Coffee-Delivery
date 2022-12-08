@@ -39,4 +39,8 @@ export const CartHeader = styled.div`
   background-color: ${(props) => props.theme["yellow-300"]};
   padding: 0.35rem 0.45rem;
   border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

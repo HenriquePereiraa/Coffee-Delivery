@@ -4,10 +4,10 @@ import {
   CoffeeCardLabelType,
   DescriptionCoffee,
 } from "./styles";
-import Coffee1 from "../../assets/coffes/Type=Americano.png";
 
 import { ShoppingCart } from "phosphor-react";
 import { ChooseAmountCoffee } from "../ChooseAmountCoffee";
+import { useState } from "react";
 
 interface CoffeeCardProps {
   image: string
@@ -24,6 +24,9 @@ export function CoffeeCard({
   description,
   price,
 }: CoffeeCardProps) {
+
+  const [amountCoffee, setAmountCoffee] = useState(1)
+
   return (
     <CoffeeCardContainer>
       <img src={image} alt="" />
@@ -42,7 +45,7 @@ export function CoffeeCard({
           <strong>{price}</strong>
         </div>
 
-        <ChooseAmountCoffee/>
+        <ChooseAmountCoffee amountCoffee={amountCoffee} setAmountCoffee={setAmountCoffee}/>
 
         <div className="coffee_cart">
           <ShoppingCart color="white" size={25} weight="fill" />

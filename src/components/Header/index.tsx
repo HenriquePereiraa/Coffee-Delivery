@@ -12,8 +12,12 @@ import { useNavigate } from "react-router-dom";
 export function Header() {
   const navigate = useNavigate();
 
-  function handleNavigation() {
+  function handleNavigationHome() {
     navigate("/");
+  }
+
+  function handleNavigationConfirmOrder() {
+    navigate("/confirmar-pedido");
   }
 
   return (
@@ -21,14 +25,14 @@ export function Header() {
       <img
         src={LogoCoffe}
         alt="logo coffee delivery"
-        onClick={handleNavigation}
+        onClick={handleNavigationHome}
       />
       <InfoHeader>
         <InfoLocalization>
           <MapPin size={26} color={defaultTheme["purple-600"]} weight="fill" />
           <strong>Recife, PE</strong>
         </InfoLocalization>
-        <CartHeader>
+        <CartHeader onClick={handleNavigationConfirmOrder}>
           <ShoppingCart
             size={26}
             color={defaultTheme["yellow-600"]}
