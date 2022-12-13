@@ -25,11 +25,27 @@ export function CoffeeCartContextProvider({
 }: CoffeeCartContextProviderProps) {
   const [coffees, setCoffees] = useState<CoffeeData[]>([]);
 
-  function addCoffeeCart(data: CoffeeData) {}
+  function addCoffeeCart(data: CoffeeData) {
+    setCoffees((state) => [...state, data]);
+  }
 
-  function decreaseCoffeeCart(id: string) {}
+  function decreaseCoffeeCart(id: string) {
+    const coffeesCartUpdated = coffees.map((coffee) => {
+      if (coffee.id === id) {
+        coffee.amount = coffee.amount - 1;
+      }
+    });
 
-  function removeCoffeeCart(id: string) {}
+    //atualizar estado
+    console.log(coffeesCartUpdated);
+  }
+
+  function removeCoffeeCart(id: string) {
+    const coffeesCartUpdated = coffees.filter((coffee) => coffee.id !== id);
+
+    //atualizar estado
+    console.log(coffeesCartUpdated);
+  }
 
   return (
     <CoffeeCartContext.Provider

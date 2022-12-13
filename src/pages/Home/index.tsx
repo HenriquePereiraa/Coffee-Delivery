@@ -77,12 +77,13 @@ export function Home() {
           {coffeesInfo?.map((coffee) => {
             return (
               <CoffeeCard
+                id={coffee.id}
                 image={coffee.img }
                 labels={coffee.label}
                 title={coffee.title}
                 description={coffee.description}
                 price={coffee.price}
-                key={coffee.title}
+                key={coffee.id}
               />
             );
           })}

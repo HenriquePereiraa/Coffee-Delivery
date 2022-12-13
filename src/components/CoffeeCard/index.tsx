@@ -7,34 +7,38 @@ import {
 
 import { ShoppingCart } from "phosphor-react";
 import { ChooseAmountCoffee } from "../ChooseAmountCoffee";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CoffeeCartContext } from "../../context/CoffeeContext";
 
 interface CoffeeCardProps {
-  image: string
+  id: string;
+  image: string;
   labels: string[];
   title: string;
   description: string;
-  price: string;
+  price: number;
 }
 
 export function CoffeeCard({
+  id,
   image,
   labels,
   title,
   description,
   price,
 }: CoffeeCardProps) {
-
-  const [amountCoffee, setAmountCoffee] = useState(1)
+  const [amountCoffee, setAmountCoffee] = useState(1);
+  const { addCoffeeCart } = useContext(CoffeeCartContext);
 
   function handleAddToCart() {
     const info = {
+      id,
       title,
       price,
-      amountCoffee
-    }
+      amount: amountCoffee,
+    };
 
-    console.log(info)
+    addCoffeeCart(info);
   }
 
   return (
@@ -55,7 +59,10 @@ export function CoffeeCard({
           <strong>{price}</strong>
         </div>
 
-        <ChooseAmountCoffee amountCoffee={amountCoffee} setAmountCoffee={setAmountCoffee}/>
+        <ChooseAmountCoffee
+          amountCoffee={amountCoffee}
+          setAmountCoffee={setAmountCoffee}
+        />
 
         <div className="coffee_cart" onClick={handleAddToCart}>
           <ShoppingCart color="white" size={25} weight="fill" />
