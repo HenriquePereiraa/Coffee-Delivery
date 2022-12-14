@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { CoffeeCartContext } from "../../context/CoffeeContext";
 import { ProductsInCart } from "../ProductsInCart";
 import {
   OrderCart,
@@ -8,12 +10,25 @@ import {
 } from "./styles";
 
 export default function ConfirmOrderCart() {
+  const { coffees } = useContext(CoffeeCartContext);
+
+  console.log(coffees)
+
   return (
     <OrderCartContainer>
       <h3>Cafés selecionados</h3>
       <OrderCart>
-        <ProductsInCart />
-        <ProductsInCart />
+        {coffees.map((coffee) => {
+          return (
+            <ProductsInCart
+              coffeeId={coffee.id}
+              title={coffee.title}
+              amount={coffee.amount}
+              price={coffee.price}
+              key={coffee.id}
+            />
+          );
+        })}
         <SummaryTotalContainer>
           <SummaryItemsTotal>
             <span className="total_title_items">Total de itens</span>

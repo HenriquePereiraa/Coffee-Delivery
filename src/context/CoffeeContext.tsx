@@ -10,8 +10,8 @@ interface CoffeeData {
 interface CoffeeCartContextType {
   coffees: CoffeeData[];
   addCoffeeCart: (data: CoffeeData) => void;
-  decreaseCoffeeCart: (id: string) => void;
   removeCoffeeCart: (id: string) => void;
+  updatedAmountCoffeeInCart: (id: string, newAmount: number) => void;
 }
 
 interface CoffeeCartContextProviderProps {
@@ -29,17 +29,6 @@ export function CoffeeCartContextProvider({
     setCoffees((state) => [...state, data]);
   }
 
-  function decreaseCoffeeCart(id: string) {
-    const coffeesCartUpdated = coffees.map((coffee) => {
-      if (coffee.id === id) {
-        coffee.amount = coffee.amount - 1;
-      }
-    });
-
-    //atualizar estado
-    console.log(coffeesCartUpdated);
-  }
-
   function removeCoffeeCart(id: string) {
     const coffeesCartUpdated = coffees.filter((coffee) => coffee.id !== id);
 
@@ -47,9 +36,19 @@ export function CoffeeCartContextProvider({
     console.log(coffeesCartUpdated);
   }
 
+  function updatedAmountCoffeeInCart(id: string, newAmount: number) {
+    // metodo para atualizar a quantidade de cada cafe dentro do carrinho
+    // atraves do chooseAmountCoffee
+  }
+
   return (
     <CoffeeCartContext.Provider
-      value={{ coffees, addCoffeeCart, decreaseCoffeeCart, removeCoffeeCart }}
+      value={{
+        coffees,
+        addCoffeeCart,
+        removeCoffeeCart,
+        updatedAmountCoffeeInCart,
+      }}
     >
       {children}
     </CoffeeCartContext.Provider>
