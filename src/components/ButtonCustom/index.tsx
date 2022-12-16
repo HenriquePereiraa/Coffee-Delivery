@@ -5,9 +5,17 @@ interface ButtomCustomProps {
   title: string;
 }
 
-export default function ButtonCustom({ Icon, title }: ButtomCustomProps) {
+export default function ButtonCustom({
+  Icon,
+  title,
+}: ButtomCustomProps) {
   return (
-    <ButtonPaymentMode actived={true} width={91} height={32} uppercase={true}>
+    <ButtonPaymentMode
+      actived={true}
+      width={91}
+      height={32}
+      uppercase={true}
+    >
       {Icon}
       {title}
     </ButtonPaymentMode>

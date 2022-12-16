@@ -37,8 +37,15 @@ export function CoffeeCartContextProvider({
   }
 
   function updatedAmountCoffeeInCart(id: string, newAmount: number) {
-    // metodo para atualizar a quantidade de cada cafe dentro do carrinho
-    // atraves do chooseAmountCoffee
+    const coffeeIndex = coffees.findIndex((coffee) => {
+      return coffee.id === id;
+    });
+
+    const tempCoffees = [...coffees];
+
+    tempCoffees[coffeeIndex].amount = newAmount;
+
+    setCoffees(tempCoffees);
   }
 
   return (

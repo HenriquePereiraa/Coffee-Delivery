@@ -5,7 +5,8 @@ import coffeeImg from "../../assets/coffes/Type=Americano.png";
 import ButtonCustom from "../ButtonCustom";
 import { Trash } from "phosphor-react";
 import { defaultTheme } from "../../styles/themes/default";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CoffeeCartContext } from "../../context/CoffeeContext";
 
 interface ProductsInCartProps {
   coffeeId: string;
@@ -21,12 +22,15 @@ export function ProductsInCart({
   price,
 }: ProductsInCartProps) {
   const [amountCoffee, setAmountCoffee] = useState(amount);
+  const { updatedAmountCoffeeInCart, removeCoffeeCart } = useContext(CoffeeCartContext);
 
   useEffect(() => {
     console.log({
       id: coffeeId,
       amount: amountCoffee,
     });
+
+    updatedAmountCoffeeInCart(coffeeId, amountCoffee);
   }, [amountCoffee]);
 
   return (
