@@ -56,7 +56,7 @@ export function CoffeeCard({
       <CardInfoBuyCoffee>
         <div className="coffee_price">
           <span>R$</span>
-          <strong>{price}</strong>
+          <strong>{price.toFixed(2)}</strong>
         </div>
 
         <ChooseAmountCoffee

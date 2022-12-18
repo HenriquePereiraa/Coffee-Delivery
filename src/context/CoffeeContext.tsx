@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 interface CoffeeData {
   id: string;
@@ -9,6 +9,7 @@ interface CoffeeData {
 
 interface CoffeeCartContextType {
   coffees: CoffeeData[];
+  valueTotalInCart: number;
   addCoffeeCart: (data: CoffeeData) => void;
   removeCoffeeCart: (id: string) => void;
   updatedAmountCoffeeInCart: (id: string, newAmount: number) => void;
@@ -24,6 +25,16 @@ export function CoffeeCartContextProvider({
   children,
 }: CoffeeCartContextProviderProps) {
   const [coffees, setCoffees] = useState<CoffeeData[]>([]);
+  const [valueTotalInCart, setValueTotalInCart] = useState(0);
+
+  useEffect(() => {
+    let priceTotal = coffees.reduce(
+      (prevValue, elementCurrent) => prevValue + (elementCurrent.price * elementCurrent.amount),
+      0
+    );
+
+    setValueTotalInCart(priceTotal);
+  }, [coffees]);
 
   function addCoffeeCart(data: CoffeeData) {
     setCoffees((state) => [...state, data]);
@@ -32,8 +43,7 @@ export function CoffeeCartContextProvider({
   function removeCoffeeCart(id: string) {
     const coffeesCartUpdated = coffees.filter((coffee) => coffee.id !== id);
 
-    //atualizar estado
-    console.log(coffeesCartUpdated);
+    setCoffees(coffeesCartUpdated);
   }
 
   function updatedAmountCoffeeInCart(id: string, newAmount: number) {
@@ -52,6 +62,7 @@ export function CoffeeCartContextProvider({
     <CoffeeCartContext.Provider
       value={{
         coffees,
+        valueTotalInCart,
         addCoffeeCart,
         removeCoffeeCart,
         updatedAmountCoffeeInCart,

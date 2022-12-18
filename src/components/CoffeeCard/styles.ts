@@ -53,6 +53,11 @@ export const CoffeeCardLabelType = styled.div`
 `;
 
 export const DescriptionCoffee = styled.p`
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+
   font-weight: 400;
   font-size: 0.95rem;
   line-height: 130%;

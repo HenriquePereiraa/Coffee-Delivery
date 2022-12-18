@@ -45,12 +45,14 @@ export function ProductsInCart({
               setAmountCoffee={setAmountCoffee}
             />
             <ButtonCustom
+              id={coffeeId}
+              handleButton={removeCoffeeCart}
               title="remover"
               Icon={<Trash size={20} color={defaultTheme["purple-600"]} />}
             />
           </div>
         </div>
-        <p className="price_coffee_in_cart">R$ {price}</p>
+        <p className="price_coffee_in_cart">R$ {(price*amount).toFixed(2)}</p>
       </ProductsInCartContainer>
       <DividingLine />
     </>
