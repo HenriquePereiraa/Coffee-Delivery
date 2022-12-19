@@ -29,7 +29,8 @@ export function CoffeeCartContextProvider({
 
   useEffect(() => {
     let priceTotal = coffees.reduce(
-      (prevValue, elementCurrent) => prevValue + (elementCurrent.price * elementCurrent.amount),
+      (prevValue, elementCurrent) =>
+        prevValue + elementCurrent.price * elementCurrent.amount,
       0
     );
 
