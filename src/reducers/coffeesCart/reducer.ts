@@ -13,7 +13,7 @@ interface CoffeeProps {
 }
 
 interface PayloadActionProps {
-  coffee: CoffeeData[]
+  coffee: CoffeeData;
   id: string;
   amount: number;
 }
@@ -24,16 +24,33 @@ type CoffeeAction = {
 };
 
 export const coffeesReducer: Reducer<CoffeeProps, CoffeeAction> = (
-  state,  
+  state,
   action
 ) => {
   const { type, payload } = action;
   switch (type) {
     case ActionTypes.ADD_NEW_COFFEE:
+      const coffeeId = payload.coffee.id;
+      
+      const index = state.coffees.findIndex((coffee) => {
+        return coffee.id === coffeeId;
+      });
+
+      if (index >= 0) {
+        
+        const tempCoffees = [...state.coffees];
+
+        console.log(tempCoffees[index].amount)
+        return {
+          ...state,
+          coffees: [...tempCoffees],
+        };
+      }
       return {
         ...state,
         coffees: [...state.coffees, payload.coffee],
       };
+
     case ActionTypes.REMOVE_COFFEE_CART:
       return {
         ...state,
