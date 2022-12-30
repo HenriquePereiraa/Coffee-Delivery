@@ -1,4 +1,16 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
+import { coffeesReducer } from "../reducers/coffeesCart/reducer";
+import {
+  addNewCoffee,
+  removeCoffee,
+  updatedAmountCoffee,
+} from "../reducers/coffeesCart/actions";
 
 interface CoffeeData {
   id: string;
@@ -24,7 +36,14 @@ export const CoffeeCartContext = createContext({} as CoffeeCartContextType);
 export function CoffeeCartContextProvider({
   children,
 }: CoffeeCartContextProviderProps) {
-  const [coffees, setCoffees] = useState<CoffeeData[]>([]);
+
+  const [coffeeState, dispatch] = useReducer(coffeesReducer, {
+    coffees: [],
+  });
+
+
+  const { coffees } = coffeeState;
+  
   const [valueTotalInCart, setValueTotalInCart] = useState(0);
 
   useEffect(() => {
@@ -38,25 +57,15 @@ export function CoffeeCartContextProvider({
   }, [coffees]);
 
   function addCoffeeCart(data: CoffeeData) {
-    setCoffees((state) => [...state, data]);
+    dispatch(addNewCoffee(data));
   }
 
   function removeCoffeeCart(id: string) {
-    const coffeesCartUpdated = coffees.filter((coffee) => coffee.id !== id);
-
-    setCoffees(coffeesCartUpdated);
+    dispatch(removeCoffee(id));
   }
 
   function updatedAmountCoffeeInCart(id: string, newAmount: number) {
-    const coffeeIndex = coffees.findIndex((coffee) => {
-      return coffee.id === id;
-    });
-
-    const tempCoffees = [...coffees];
-
-    tempCoffees[coffeeIndex].amount = newAmount;
-
-    setCoffees(tempCoffees);
+    dispatch(updatedAmountCoffee(id, newAmount));
   }
 
   return (

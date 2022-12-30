@@ -16,7 +16,7 @@ export function addNewCoffee(coffee: CoffeeData) {
   };
 }
 
-export function removeCoffeeCart(id: string) {
+export function removeCoffee(id: string) {
   return {
     type: ActionTypes.REMOVE_COFFEE_CART,
     payload: {
@@ -25,7 +25,7 @@ export function removeCoffeeCart(id: string) {
   };
 }
 
-export function updatedAmountCoffeeInCart(id: string, amount: number) {
+export function updatedAmountCoffee(id: string, amount: number) {
   return {
     type: ActionTypes.UPDATE_AMOUNT_COFFEE_IN_CART,
     payload: {

@@ -1,3 +1,4 @@
+import { Reducer } from "react";
 import { ActionTypes } from "./actions";
 
 export interface CoffeeData {
@@ -11,7 +12,21 @@ interface CoffeeProps {
   coffees: CoffeeData[];
 }
 
-export function coffeesReducer(state: CoffeeProps, action: any) {
+interface PayloadActionProps {
+  coffee: CoffeeData[]
+  id: string;
+  amount: number;
+}
+
+type CoffeeAction = {
+  type: string;
+  payload: PayloadActionProps;
+};
+
+export const coffeesReducer: Reducer<CoffeeProps, CoffeeAction> = (
+  state,  
+  action
+) => {
   const { type, payload } = action;
   switch (type) {
     case ActionTypes.ADD_NEW_COFFEE:
@@ -19,13 +34,11 @@ export function coffeesReducer(state: CoffeeProps, action: any) {
         ...state,
         coffees: [...state.coffees, payload.coffee],
       };
-
     case ActionTypes.REMOVE_COFFEE_CART:
       return {
         ...state,
         coffees: state.coffees.filter((coffee) => coffee.id !== payload.id),
       };
-
     case ActionTypes.UPDATE_AMOUNT_COFFEE_IN_CART:
       const coffeeIndex = state.coffees.findIndex((coffee) => {
         return coffee.id === payload.id;
@@ -34,9 +47,13 @@ export function coffeesReducer(state: CoffeeProps, action: any) {
       const tempCoffees = [...state.coffees];
 
       tempCoffees[coffeeIndex].amount = payload.amount;
-
       return {
         coffees: [...tempCoffees],
       };
+
+    default:
+      return {
+        state,
+      };
   }
-}
+};

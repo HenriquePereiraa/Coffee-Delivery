@@ -25,11 +25,6 @@ export function ProductsInCart({
   const { updatedAmountCoffeeInCart, removeCoffeeCart } = useContext(CoffeeCartContext);
 
   useEffect(() => {
-    console.log({
-      id: coffeeId,
-      amount: amountCoffee,
-    });
-
     updatedAmountCoffeeInCart(coffeeId, amountCoffee);
   }, [amountCoffee]);
 
