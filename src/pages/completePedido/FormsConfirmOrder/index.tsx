@@ -1,8 +1,11 @@
 import { MapPinLine } from "phosphor-react";
 import { CompleteOrder, InputForm, TitleCofirmPayment } from "./styles";
 import { defaultTheme } from "../../../styles/themes/default";
+import { useFormContext } from "react-hook-form";
 
 export function FormsConfirmOrder() {
+  const { register } = useFormContext();
+
   return (
     <CompleteOrder>
       <TitleCofirmPayment>
@@ -17,23 +20,53 @@ export function FormsConfirmOrder() {
         </div>
       </TitleCofirmPayment>
 
-      <form>
+      <div className="form">
         <div className="inputContainer">
-          <InputForm type="text" placeholder="CEP" maxWidth={200} />
+          <InputForm
+            type="text"
+            placeholder="CEP"
+            maxWidth={200}
+            {...register("cep")}
+          />
         </div>
         <div className="inputContainer">
-          <InputForm type="text" placeholder="Rua" />
+          <InputForm type="text" placeholder="Rua" {...register("rua")} />
         </div>
         <div className="inputContainer">
-          <InputForm type="text" placeholder="Número" maxWidth={200} />
-          <InputForm type="text" placeholder="Complemento" maxWidth={348} />
+          <InputForm
+            type="text"
+            placeholder="Número"
+            maxWidth={200}
+            {...register("numero", { valueAsNumber: true })}
+          />
+          <InputForm
+            type="text"
+            placeholder="Complemento"
+            maxWidth={348}
+            {...register("complemento")}
+          />
         </div>
         <div className="inputContainer">
-          <InputForm type="text" placeholder="Bairro" maxWidth={200} />
-          <InputForm type="text" placeholder="Cidade" maxWidth={276} />
-          <InputForm type="text" placeholder="UF" maxWidth={60} />
+          <InputForm
+            type="text"
+            placeholder="Bairro"
+            maxWidth={200}
+            {...register("bairro")}
+          />
+          <InputForm
+            type="text"
+            placeholder="Cidade"
+            maxWidth={276}
+            {...register("cidade")}
+          />
+          <InputForm
+            type="text"
+            placeholder="UF"
+            maxWidth={60}
+            {...register("uf")}
+          />
         </div>
-      </form>
+      </div>
     </CompleteOrder>
   );
 }

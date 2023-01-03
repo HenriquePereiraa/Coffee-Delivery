@@ -6,8 +6,10 @@ export const ConfirmOrderContainer = styled.section`
   margin: 1.5rem auto;
   padding: 0 2%;
 
-  display: flex;
-  gap: 1rem;
+  form {
+    display: flex;
+    gap: 1rem;
+  }
 `;
 
 export const CompleteOrderContainer = styled.div`
@@ -19,4 +21,3 @@ export const CompleteOrderContainer = styled.div`
   width: 100%;
   color: ${(props) => props.theme["gray-900"]};
 `;
-

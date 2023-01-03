@@ -51,7 +51,9 @@ export default function ConfirmOrderCart() {
           )}
         </SummaryTotalContainer>
 
-        <button className="btn_confirm_order">confirmar pedido</button>
+        <button className="btn_confirm_order" type="submit">
+          confirmar pedido
+        </button>
       </OrderCart>
     </OrderCartContainer>
   );

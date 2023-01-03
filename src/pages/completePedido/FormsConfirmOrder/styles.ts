@@ -5,7 +5,7 @@ export const CompleteOrder = styled.div`
   border-radius: 8px;
   background-color: ${(props) => props.theme["gray-200"]};
 
-  form {
+  .form {
     margin-top: 1.2rem;
     display: flex;
     flex-direction: column;
