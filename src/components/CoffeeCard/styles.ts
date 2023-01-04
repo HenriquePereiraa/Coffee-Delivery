@@ -53,10 +53,10 @@ export const CoffeeCardLabelType = styled.div`
 `;
 
 export const DescriptionCoffee = styled.p`
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 
   font-weight: 400;
   font-size: 0.95rem;
@@ -97,6 +97,23 @@ export const CardInfoBuyCoffee = styled.div`
 
     &:hover {
       background-color: ${(props) => props.theme["purple-600"]};
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    gap: 2px;
+
+    .coffee_price {
+      color: ${(props) => props.theme["gray-700"]};
+
+      span {
+        font-size: 0.8rem;
+        padding-right: 2px;
+      }
+
+      strong {
+        font-size: 1.1rem;
+      }
     }
   }
 `;

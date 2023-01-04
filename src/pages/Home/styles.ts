@@ -42,14 +42,25 @@ export const HomeContentInfo = styled.div`
     color: ${(props) => props.theme["gray-900"]};
   }
 
-  .test {
+  .info-hero {
     color: ${(props) => props.theme["gray-800"]};
-    line-height: 5px;
+    line-height: 15px;
     font-weight: 400;
+  }
+
+  @media screen and (max-width: 830px) {
+    h1 {
+      text-align:center;
+    }
+    align-items: center;
   }
 `;
 
-export const HomeContentBanner = styled.img``;
+export const HomeContentBanner = styled.img`
+  @media screen and (max-width: 830px) {
+    display: none;
+  }
+`;
 
 export const CardsInfoContainer = styled.div`
   display: grid;
@@ -84,4 +95,8 @@ export const ListCoffees = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 5rem 2rem;
+
+  @media screen and (max-width: 830px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;

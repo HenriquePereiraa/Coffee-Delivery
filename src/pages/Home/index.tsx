@@ -51,7 +51,7 @@ export function Home() {
         <HomeContent>
           <HomeContentInfo>
             <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-            <p className="test">
+            <p className="info-hero">
               Com o Coffee Delivery você recebe seu café onde estiver, a
               qualquer hora
             </p>
