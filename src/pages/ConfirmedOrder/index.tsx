@@ -3,12 +3,15 @@ import { CardInfoConfirmedOrder } from "../../components/CardInfoConfirmedOrder"
 import { ConfirmedOrderContainer, InfoConfirmedOrder } from "./styles";
 
 import ConfirmedOrderBanner from "../../assets/banner-confirmed-order.png";
+import { useParams } from "react-router-dom";
 
 export function ConfirmedOrder() {
+  const { rua, numero, bairro, cidade, uf, mode } = useParams();
+
   const infosConfirmedOrderDeliveryInformation = [
     {
-      title: "Entrega em Rua João Daniel Martinelli, 102",
-      description: "Farrapos - Porto Alegre, RS",
+      title: `Entrega em Rua ${rua}, ${numero}`,
+      description: `${bairro} - ${cidade}, ${uf}`,
       color: "purple",
       icon: <MapPin size={30} color="white" weight="fill" />,
     },
@@ -20,7 +23,7 @@ export function ConfirmedOrder() {
     },
     {
       title: "Pagamento na entrega",
-      description: "Cartão de Crédito",
+      description: `${mode?.toLocaleLowerCase()}`,
       color: "yellow1",
       icon: <CurrencyDollar size={30} color="white" weight="fill" />,
     },

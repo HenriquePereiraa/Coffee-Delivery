@@ -2,6 +2,7 @@ import ConfirmOrderCart from "../../components/ConfirmOrderCart";
 import { CompleteOrderContainer, ConfirmOrderContainer } from "./styles";
 import { FormsConfirmOrder } from "./FormsConfirmOrder";
 import { ModePayment } from "./ModePayment";
+import { useNavigate } from "react-router-dom";
 
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,8 +22,8 @@ const addressFormValidationSchema = zod.object({
 type addressFormData = zod.infer<typeof addressFormValidationSchema>;
 
 export function ConfirmOrder() {
-
-  const [modePayment, setModePayment] = useState('')
+  const [modePayment, setModePayment] = useState("");
+  const navigate = useNavigate();
 
   const addressForm = useForm<addressFormData>({
     resolver: zodResolver(addressFormValidationSchema),
@@ -39,12 +40,15 @@ export function ConfirmOrder() {
   const { handleSubmit } = addressForm;
 
   function handleSendData(data: addressFormData) {
-    if(modePayment === "") {
-      alert("Selecione um mode de pagamento")
+    if (modePayment === "") {
+      alert("Selecione um mode de pagamento");
       return;
     }
     console.log(data);
-    console.log(modePayment)
+    console.log(modePayment);
+    navigate(
+      `/pedido-confirmado/${data.rua}/${data.numero}/${data.bairro}/${data.cidade}/${data.uf}/${modePayment}`
+    );
   }
 
   return (
