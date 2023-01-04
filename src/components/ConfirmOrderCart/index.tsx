@@ -11,6 +11,7 @@ import {
 
 export default function ConfirmOrderCart() {
   const { coffees, valueTotalInCart } = useContext(CoffeeCartContext);
+
   const frete = 3.2;
 
   const hasNotCoffee = !coffees.length;
@@ -26,6 +27,7 @@ export default function ConfirmOrderCart() {
               title={coffee.title}
               amount={coffee.amount}
               price={coffee.price}
+              image={coffee.image}
               key={coffee.id}
             />
           );

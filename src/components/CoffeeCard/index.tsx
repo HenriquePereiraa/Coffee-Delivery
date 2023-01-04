@@ -35,6 +35,7 @@ export function CoffeeCard({
       id,
       title,
       price,
+      image,
       amount: amountCoffee,
     };
 
@@ -43,7 +44,7 @@ export function CoffeeCard({
 
   return (
     <CoffeeCardContainer>
-      <img src={image} alt="" />
+      <img src={image} alt={title} />
       <CoffeeCardLabelType>
         {labels.map((label) => {
           return <span key={label}>{label}</span>;

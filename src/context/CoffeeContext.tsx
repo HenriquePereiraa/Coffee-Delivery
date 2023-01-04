@@ -17,6 +17,7 @@ interface CoffeeData {
   title: string;
   price: number;
   amount: number;
+  image: string
 }
 
 interface CoffeeCartContextType {

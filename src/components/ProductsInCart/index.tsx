@@ -12,6 +12,7 @@ interface ProductsInCartProps {
   coffeeId: string;
   title: string;
   amount: number;
+  image:string;
   price: number;
 }
 
@@ -19,6 +20,7 @@ export function ProductsInCart({
   coffeeId,
   title,
   amount,
+  image,
   price,
 }: ProductsInCartProps) {
   const [amountCoffee, setAmountCoffee] = useState(amount);
@@ -31,7 +33,7 @@ export function ProductsInCart({
   return (
     <>
       <ProductsInCartContainer>
-        <img src={coffeeImg} alt="café escolhido" />
+        <img src={image} alt="café escolhido" />
         <div className="products_cart_info">
           <p>{title}</p>
           <div className="products_cart_info_functions">
