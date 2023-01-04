@@ -26,22 +26,30 @@ export function FormsConfirmOrder() {
             type="text"
             placeholder="CEP"
             maxWidth={200}
+            required
             {...register("cep")}
           />
         </div>
         <div className="inputContainer">
-          <InputForm type="text" placeholder="Rua" {...register("rua")} />
+          <InputForm
+            type="text"
+            placeholder="Rua"
+            {...register("rua")}
+            required
+          />
         </div>
         <div className="inputContainer">
           <InputForm
             type="text"
             placeholder="Número"
+            required
             maxWidth={200}
             {...register("numero", { valueAsNumber: true })}
           />
           <InputForm
             type="text"
             placeholder="Complemento"
+            required
             maxWidth={348}
             {...register("complemento")}
           />
@@ -50,11 +58,13 @@ export function FormsConfirmOrder() {
           <InputForm
             type="text"
             placeholder="Bairro"
+            required
             maxWidth={200}
             {...register("bairro")}
           />
           <InputForm
             type="text"
+            required
             placeholder="Cidade"
             maxWidth={276}
             {...register("cidade")}
@@ -62,6 +72,7 @@ export function FormsConfirmOrder() {
           <InputForm
             type="text"
             placeholder="UF"
+            required
             maxWidth={60}
             {...register("uf")}
           />

@@ -6,12 +6,13 @@ import { ModePayment } from "./ModePayment";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
+import { useState } from "react";
 
 const addressFormValidationSchema = zod.object({
   cep: zod.string().min(9, "informe o CEP completo").max(9, "CEP inválido"),
   rua: zod.string().min(1),
   numero: zod.number().min(1, "Informe o numero de sua residência"),
-  complemento: zod.string(),
+  complemento: zod.string().min(1),
   bairro: zod.string().min(1, "Informe seu bairro"),
   cidade: zod.string().min(1, "Informe seu bairro"),
   uf: zod.string().min(2, "Informe o UF de sua cidade").max(2, "UF inválido"),
@@ -20,12 +21,14 @@ const addressFormValidationSchema = zod.object({
 type addressFormData = zod.infer<typeof addressFormValidationSchema>;
 
 export function ConfirmOrder() {
+
+  const [modePayment, setModePayment] = useState('')
+
   const addressForm = useForm<addressFormData>({
     resolver: zodResolver(addressFormValidationSchema),
     defaultValues: {
       cep: "",
       rua: "",
-      numero: 0,
       complemento: "",
       bairro: "",
       cidade: "",
@@ -36,7 +39,12 @@ export function ConfirmOrder() {
   const { handleSubmit } = addressForm;
 
   function handleSendData(data: addressFormData) {
+    if(modePayment === "") {
+      alert("Selecione um mode de pagamento")
+      return;
+    }
     console.log(data);
+    console.log(modePayment)
   }
 
   return (
@@ -47,7 +55,7 @@ export function ConfirmOrder() {
           <FormProvider {...addressForm}>
             <FormsConfirmOrder />
           </FormProvider>
-          <ModePayment />
+          <ModePayment handleModePayment={setModePayment} />
         </CompleteOrderContainer>
         <ConfirmOrderCart />
       </form>

@@ -10,7 +10,11 @@ export const OrderCartContainer = styled.div`
   color: ${(props) => props.theme["gray-900"]};
 `;
 
-export const OrderCart = styled.div`
+interface OrderCartProps {
+  disabled: boolean
+}
+
+export const OrderCart = styled.div<OrderCartProps>`
   padding: 30px;
   background-color: ${(props) => props.theme["gray-200"]};
   border-radius: 6px 44px;
@@ -23,14 +27,14 @@ export const OrderCart = styled.div`
     border-radius: 6px;
     padding: 12px 8px 12px 8px;
 
-    background-color: ${(props) => props.theme["yellow-600"]};
+    background-color: ${props => props.disabled ? props.theme["yellow-900"] : props.theme["yellow-600"] };
     color: ${(props) => props.theme["white"]};
 
     font-size: 0.88rem;
     font-weight: 700;
     text-transform: uppercase;
 
-    cursor: pointer;
+    cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
     transition: color 0.4s;
 
     &:hover {

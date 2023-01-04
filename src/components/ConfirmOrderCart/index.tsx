@@ -13,10 +13,12 @@ export default function ConfirmOrderCart() {
   const { coffees, valueTotalInCart } = useContext(CoffeeCartContext);
   const frete = 3.2;
 
+  const hasNotCoffee = !coffees.length;
+
   return (
     <OrderCartContainer>
       <h3>Cafés selecionados</h3>
-      <OrderCart>
+      <OrderCart disabled={hasNotCoffee}>
         {coffees.map((coffee) => {
           return (
             <ProductsInCart
@@ -51,7 +53,7 @@ export default function ConfirmOrderCart() {
           )}
         </SummaryTotalContainer>
 
-        <button className="btn_confirm_order" type="submit">
+        <button className="btn_confirm_order" type="submit" disabled={hasNotCoffee}>
           confirmar pedido
         </button>
       </OrderCart>

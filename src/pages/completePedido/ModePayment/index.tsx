@@ -7,7 +7,11 @@ import {
 } from "./styles";
 import { defaultTheme } from "../../../styles/themes/default";
 
-export function ModePayment() {
+interface ModePaymentProps {
+  handleModePayment: (type: string) => void;
+}
+
+export function ModePayment({ handleModePayment }: ModePaymentProps) {
   return (
     <ModePaymentContainer>
       <TitleConfirmPayment>
@@ -25,15 +29,24 @@ export function ModePayment() {
       </TitleConfirmPayment>
 
       <ButtonsModePayment>
-        <ButtonPaymentMode>
+        <ButtonPaymentMode
+          type="button"
+          onClick={() => handleModePayment("CARTÃO DE CRÉDITO")}
+        >
           <CreditCard size={20} color={defaultTheme["purple-600"]} />
           CARTÃO DE CRÉDITO
         </ButtonPaymentMode>
-        <ButtonPaymentMode>
+        <ButtonPaymentMode
+          type="button"
+          onClick={() => handleModePayment("CARTÃO DE DÉBITO")}
+        >
           <CreditCard size={20} color={defaultTheme["purple-600"]} />
           CARTÃO DE DÉBITO
         </ButtonPaymentMode>
-        <ButtonPaymentMode>
+        <ButtonPaymentMode
+          type="button"
+          onClick={() => handleModePayment("DINHEIRO")}
+        >
           <CreditCard size={20} color={defaultTheme["purple-600"]} />
           DINHEIRO
         </ButtonPaymentMode>
