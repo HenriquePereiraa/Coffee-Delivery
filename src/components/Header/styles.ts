@@ -36,6 +36,7 @@ export const InfoLocalization = styled.div`
 `;
 
 export const CartHeader = styled.div`
+position:relative ;
   background-color: ${(props) => props.theme["yellow-300"]};
   padding: 0.35rem 0.45rem;
   border-radius: 6px;
@@ -44,3 +45,23 @@ export const CartHeader = styled.div`
     cursor: pointer;
   }
 `;
+
+export const CoffeeAmountInCart = styled.div`
+  position:absolute;
+  top:-8px;
+  right:-8px;
+
+  display:flex ;
+  justify-content:center;
+  align-items:center;
+
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:${props => props.theme['yellow-900']} ;
+  color:${props => props.theme['white']};
+
+  font-size:0.8rem;
+  Line height:15.6px;
+  font-weight:700;
+`
