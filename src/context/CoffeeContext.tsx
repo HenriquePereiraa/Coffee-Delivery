@@ -36,16 +36,32 @@ export const CoffeeCartContext = createContext({} as CoffeeCartContextType);
 export function CoffeeCartContextProvider({
   children,
 }: CoffeeCartContextProviderProps) {
+  const [coffeeState, dispatch] = useReducer(
+    coffeesReducer,
+    {
+      coffees: [],
+    },
+    () => {
+      const storedStateAsJSON = localStorage.getItem(
+        "@coffee-delivery:coffeeState-1.0.0"
+      );
 
-  const [coffeeState, dispatch] = useReducer(coffeesReducer, {
-    coffees: [],
-  });
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON);
+      }
+    }
+  );
 
+  const [valueTotalInCart, setValueTotalInCart] = useState(0);
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(coffeeState);
+
+    localStorage.setItem("@coffee-delivery:coffeeState-1.0.0", stateJSON);
+  }, [coffeeState]);
 
   const { coffees } = coffeeState;
   
-  const [valueTotalInCart, setValueTotalInCart] = useState(0);
-
   useEffect(() => {
     let priceTotal = coffees.reduce(
       (prevValue, elementCurrent) =>
